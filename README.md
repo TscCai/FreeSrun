@@ -28,4 +28,4 @@ Reference:
 
 Acknowledgement:
 
-The advent of this project is inseparable from BITers' help. Thanks for their works!
+This project won't be created without BITers' works. Thanks for their code that inspired me alot.
