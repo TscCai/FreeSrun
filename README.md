@@ -3,16 +3,16 @@ FreeSrun is an open Srun3000 client which is widely used in university campus in
 
 FreeSrun can start with command arguments. Here are all the available arguments:
 
-|Arguments|Description|
-|:--------|:----------|
-|   -u   	|  Username |
-|   -p   	|  Password |
-|   -add	 | Authentication server IP address|
-|   [-lp]	|Login/ Logout port|
-|   [-hp] |	Heartbeat packets port|
-|   [-nl]	|Notify duration, in second|
-|   [-to]	|Timestamp offset|
-|   [-?/ -h/ -help]	|Show arguments list|
+|	Arguments       |              Description        |
+|:------------------|:--------------------------------|
+|   -u              |              Username           |
+|   -p              |              Password           |
+|   -add            | Authentication server IP address|
+|   [-lp]           |       Login/ Logout port        |
+|   [-hp]           |     Heartbeat packets port      |
+|   [-nl]           |   Notify duration, in second    |
+|   [-to]           |       Timestamp offset          |
+|   [-?/ -h/ -help] |       Show arguments list       |
 
 **※Arguments wrapped with brackets are optional. You can start it like:**
 
