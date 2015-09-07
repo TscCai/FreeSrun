@@ -10,15 +10,28 @@ FreeSrun can start with command arguments. Here are all the available arguments:
 |   -add            | Authentication server IP address|
 |   [-lp]           |       Login/ Logout port        |
 |   [-hp]           |     Heartbeat packets port      |
-|   [-nl]           |   Notify duration, in second    |
+|   [-hi]           |     Heartbeat packets interval, in minute, decimal support, default as 2  |
+|   [-nl]           |Notify balloon duration, in second, default as 3|
 |   [-to]           |       Timestamp offset          |
+|   [-l]            |             Log level           |
 |   [-?/ -h/ -help] |       Show arguments list       |
+
+The available options for argument -hi stand for Heartbeat packets interval are as follows:
+|Available option|Description|
+|:---------------|:----------|
+|     debug      |Debug mode, has the most detailed log.|
+|     d          |Shortform for debug|
+|    warning     |Warning mode, onlyn log for exceptions and errors|
+|    w           |Shortform for warning|
+|    none        |None mode, log nothing|
+|    no           |Shortform for none|
+|    n           |Shortform for none|
 
 **※Arguments wrapped with brackets are optional. You can start it like:**
 
-    FreeSrun.exe -u %USERNAME% -p %PASSWORD% -add %IPADD% -nl 3
+    FreeSrun.exe -u %USERNAME% -p %PASSWORD% -add %IPADD% -nl 3 -hi 1.5 -l d
 
-FreeSrun 1.0.2 stable is now available.
+FreeSrun 1.0.4 is now available.
 
 **Reference:**
 
