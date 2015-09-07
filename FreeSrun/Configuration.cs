@@ -36,7 +36,7 @@ namespace FreeSrun
 				info += "[-lp] Login port, 3333 default\n";
 				info += "[-hp] Heartbeat packets port, 3335 default\n";
 				info += "[-hi] Heartbeat packet interval, in minute, decimal support, 2 defualt\n";
-				info += "[-nd] Notify balloon duration, in second, 3 default\n";
+				info += "[-nl] Notify balloon duration, in second, 3 default\n";
 				info += "[-to] Timestamp offset between local time and server time\n";
 				info += "[-l] Set the log level\n";
 				info += "[-help][-h][-?] Show the help info";
@@ -51,7 +51,7 @@ namespace FreeSrun
 		///     -add Server IP address"
 		///     [-lp] Login port, 3333 default
 		///     [-hp] Heartbeat packets port, 3335 default
-		///     [-nd] Notify balloon duration, in second, 3 default
+		///     [-nl] Notify balloon duration, in second, 3 default
 		///     [-to] Timestamp offset between local time and server time";
 		///     [-h/-?/-help] Show the help info
 		/// </summary>
