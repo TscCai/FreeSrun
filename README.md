@@ -17,6 +17,7 @@ FreeSrun can start with command arguments. Here are all the available arguments:
 |   [-?/ -h/ -help] |       Show arguments list       |
 
 The available options for argument -hi stand for Heartbeat packets interval are as follows:
+
 |Available option|Description|
 |:---------------|:----------|
 |     debug      |Debug mode, has the most detailed log.|
