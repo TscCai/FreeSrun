@@ -37,11 +37,11 @@ namespace FreeSrun
                     if (args.Length > 0 && Configuration.CheckParam(args))
                     {
                         config = Configuration.Configure(args);
-                        frmMain = new FrmMain(config);
+                        frmMain = new Frm_Main(config);
                     }
                     else
                     {
-                        frmMain = new FrmMain();
+                        frmMain = new Frm_Main();
 
                     }
                     

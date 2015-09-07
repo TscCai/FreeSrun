@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FreeSrun")]
-[assembly: AssemblyCopyright("Copyright © FreeSrun 2014")]
+[assembly: AssemblyCopyright("Copyright © FreeSrun 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 // Internal Version: 
 
-[assembly: AssemblyVersion("1.0.3")]
-[assembly:AssemblyInformationalVersion("1.0.3.1")]
-[assembly: AssemblyFileVersion("1.0.3")]
+[assembly: AssemblyVersion("1.0.4")]
+[assembly:AssemblyInformationalVersion("1.0.4.1")]
+[assembly: AssemblyFileVersion("1.0.4")]
 
