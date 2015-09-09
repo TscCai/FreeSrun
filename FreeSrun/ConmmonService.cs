@@ -32,14 +32,14 @@ namespace FreeSrun
 
 
 		/// <summary>
-		/// Build the heart beat packet
+		/// Build the heartbeat packet
 		/// </summary>
 		/// <param name="uid"></param>
 		/// <returns></returns>
 		public static byte[] BuildHeartBeatPacket(string uid)
 		{
 			// uid is a string(more than 8 bytes) stand for a Int64(8 bytes)
-			// Convert the uid(Int64 format) to byte array, that's the heart beat packet.
+			// Convert the uid(Int64 format) to byte array, that's the heartbeat packet.
 			// Attention: Windows/ Linux is a Little Endian system.
 			byte[] result = BitConverter.GetBytes(Convert.ToInt64(uid));
 			if (!BitConverter.IsLittleEndian)
