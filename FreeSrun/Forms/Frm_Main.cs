@@ -98,17 +98,17 @@ namespace FreeSrun.Forms
 			{
 				CommonService.logger.AppendLog("Login.\r\n"
 					+ "Login url: {0}\r\n" + "Login port: {1}\r\n"
-					+ "Server IP: {2}\r\n" + "Heartbeat port: {3} \r\n" + "Heartbeat interval: {4}\r\n"
+					+ "Server IP: {2}\r\n" + "Heartbeat port: {3} \r\n" + "Heartbeat interval: {4} ms\r\n"
 					+ "Logout url: {5}\r\n" + "Log level: {6}\r\n"
 					+ "Message url: {7}\r\n" + "Notify duration: {8} second(s)\r\n"
 					+ "Query url: {9}\r\n" + "Timestamp offset: {10}\r\n"
 					+ "Username: {11}\r\n",
 					srunSvc.Config.LoginUrl, srunSvc.Config.LoginPort,
-				    srunSvc.Config.ServerIP, srunSvc.Config.HeartBeatPort, srunSvc.Config.HeartBeatInterval,
-					srunSvc.Config.LogoutUrl, srunSvc.Config.LogLevel,
-					srunSvc.Config.MessageUrl, srunSvc.Config.NotifyDuration,
-					srunSvc.Config.QueryUrl, srunSvc.Config.TimestampOffset,
-					srunSvc.Config.Username
+						srunSvc.Config.ServerIP, srunSvc.Config.HeartBeatPort, srunSvc.Config.HeartBeatInterval,
+						srunSvc.Config.LogoutUrl, srunSvc.Config.LogLevel,
+						srunSvc.Config.MessageUrl, srunSvc.Config.NotifyDuration,
+						srunSvc.Config.QueryUrl, srunSvc.Config.TimestampOffset,
+						srunSvc.Config.Username
 					);
 
 			}

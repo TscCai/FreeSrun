@@ -57,16 +57,16 @@ namespace FreeSrun
 			keep.AutoReset = true;
 			keep.Elapsed += new ElapsedEventHandler(Keep_Elapsed);
 			keep.Enabled = true;
-			if(Config.LogLevel==SimpleLogger.LogLevel.Debug)
-			{ 
-				
+			if (Config.LogLevel == SimpleLogger.LogLevel.Debug)
+			{
+
 				string content = "";
 				foreach (byte i in Status.HeartBeatPacket)
 				{
 					content += "0x" + i.ToString("X2") + " ";
 				}
 				content = content.Remove(content.Length - 1);
-				CommonService.logger.AppendLog("Timer is set. Heartbeat packet is: {0}",content);
+				CommonService.logger.AppendLog("Timer is set. Heartbeat packet is: {0}", content);
 			}
 		}
 
@@ -88,13 +88,13 @@ namespace FreeSrun
 						content += "0x" + i.ToString("X2") + " ";
 					}
 					content = content.Remove(content.Length - 1);
-					CommonService.logger.AppendLog("Timer is triggered and the heartbeat packet has been sent. The response is:\n{0}",content);
+					CommonService.logger.AppendLog("Timer is triggered and the heartbeat packet has been sent. The response is:\n{0}", content);
 				}
 			}
 			catch (SocketException ex)
 			{
 				string result = WebRequestHelper.CreateRequest(Config.QueryUrl, "GET", "");
-				if (result == "error" )
+				if (result == "error")
 				{
 					CommonService.logger.AppendLog(ex);
 				}

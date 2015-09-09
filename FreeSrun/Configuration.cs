@@ -17,12 +17,15 @@ namespace FreeSrun
 		public string ServerIP { get; set; }
 		public int LoginPort { get; set; }
 		public int HeartBeatPort { get; set; }
+		/// <summary>
+		/// Heartbeat interval to trigger the internal timer, in millisecond.
+		/// </summary>
 		public double HeartBeatInterval { get; set; }
 		public long TimestampOffset { get; set; }
 		public int NotifyDuration { get; set; }
 		public bool IsConfigured { get; set; }
 		public SimpleLogger.LogLevel LogLevel { get; set; }
-	
+
 
 		public static string HelpInfo
 		{
@@ -105,7 +108,7 @@ namespace FreeSrun
 				double val = Convert.ToDouble(list["-hi"]);
 				if (result.HeartBeatInterval > 0)
 				{
-					result.HeartBeatInterval = val;
+					result.HeartBeatInterval = val*1000*60;
 				}
 			}
 			if (list.ContainsKey("-nl"))

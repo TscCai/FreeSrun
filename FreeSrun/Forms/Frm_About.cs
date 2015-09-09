@@ -21,7 +21,8 @@ namespace FreeSrun.Forms
 			this.textBoxDescription.Text = AssemblyDescription;
 		}
 
-		public Frm_About(string message):this()
+		public Frm_About(string message)
+			: this()
 		{
 			textBoxDescription.Text += "\n" + message;
 		}
