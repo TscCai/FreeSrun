@@ -10,6 +10,8 @@ using System.Linq;
 using System.Windows.Forms;
 using FreeSrun.Util;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
+using System.Threading;
 
 namespace FreeSrun.Forms
 {
@@ -21,6 +23,7 @@ namespace FreeSrun.Forms
 		public Frm_Main()
 		{
 			InitializeComponent();
+
 		}
 
 		public Frm_Main(Configuration config)
@@ -33,9 +36,9 @@ namespace FreeSrun.Forms
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
 			string[] args = { "-u", txtUsername.Text, "-p", txtPassword.Text, "-add", txtAddress.Text };
-			if (Configuration.CheckParam(args))
+			if ((srunSvc.Config == null && Configuration.CheckParam(args)) || srunSvc.Config != null)
 			{
-				srunSvc.Config = Configuration.Configure(args);
+				srunSvc.Config = srunSvc.Config == null ? Configuration.Configure(args) : srunSvc.Config;
 				CommonService.logger.Level = srunSvc.Config.LogLevel;
 				try
 				{
@@ -49,12 +52,14 @@ namespace FreeSrun.Forms
 			else
 			{
 				MessageBox.Show("运行参数错误");
+				return;
 			}
 		}
 
 		private void DoLogin()
 		{
 #if !FAKE_LOGIN
+
 			LoginResponseResult result = srunSvc.Login();
 			if (result.Status == ResponseStatus.Success)
 			{
@@ -92,7 +97,7 @@ namespace FreeSrun.Forms
 			}
 			else
 			{
-				lblHint.Text = CodeInfo.InfoDict[result.Message];
+				lblHint.Text = CodeInfo.InfoDict.ContainsKey(result.Message) ? CodeInfo.InfoDict[result.Message] : result.Message;
 			}
 			if (srunSvc.Config.LogLevel == SimpleLogger.LogLevel.Debug)
 			{
@@ -102,16 +107,17 @@ namespace FreeSrun.Forms
 					+ "Logout url: {5}\r\n" + "Log level: {6}\r\n"
 					+ "Message url: {7}\r\n" + "Notify duration: {8} second(s)\r\n"
 					+ "Query url: {9}\r\n" + "Timestamp offset: {10}\r\n"
-					+ "Username: {11}\r\n",
+					+ "Username: {11}\r\n" + "Uid: {12}\r\n",
 					srunSvc.Config.LoginUrl, srunSvc.Config.LoginPort,
 						srunSvc.Config.ServerIP, srunSvc.Config.HeartBeatPort, srunSvc.Config.HeartBeatInterval,
 						srunSvc.Config.LogoutUrl, srunSvc.Config.LogLevel,
 						srunSvc.Config.MessageUrl, srunSvc.Config.NotifyDuration,
 						srunSvc.Config.QueryUrl, srunSvc.Config.TimestampOffset,
-						srunSvc.Config.Username
+						srunSvc.Config.Username, result.Uid
 					);
 
 			}
+
 #endif
 		}
 
@@ -160,6 +166,19 @@ namespace FreeSrun.Forms
 				{
 					CommonService.logger.AppendLog(ex);
 				}
+			}
+			SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
+		}
+
+		private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
+		{
+			if (e.Mode == PowerModes.Resume)
+			{
+				DoLogin();
+			}
+			else if (e.Mode == PowerModes.Suspend)
+			{
+				DoLogout();
 			}
 		}
 
