@@ -1,4 +1,4 @@
-#FreeSrun#
+# FreeSrun #
 FreeSrun is an open Srun3000 client which is widely used in university campus in China developed in C#. However, the official version forbids wifi-share, VM-bridged-networking. To break these limits, FreeSrun is created. There is no any limits or inspection on your software / hardware environment, it only provides authentication function.
 
 FreeSrun can start with command arguments. Here are all the available arguments:
@@ -16,19 +16,19 @@ FreeSrun can start with command arguments. Here are all the available arguments:
 |   [-l]            |             Log level           |
 |   [-?/ -h/ -help] |       Show arguments list       |
 
-The available options for argument -hi stand for Heartbeat packets interval are as follows:
+The available options for argument -l stand for log level are as follows:
 
 |Available option|Description|
 |:---------------|:----------|
-|     debug      |Debug mode, has the most detailed log.|
-|     d          |Shortform for debug|
+|    debug       |Debug mode, has the most detailed log.|
+|    d           |Shortform for debug|
 |    warning     |Warning mode, onlyn log for exceptions and errors|
 |    w           |Shortform for warning|
 |    none        |None mode, log nothing|
-|    no           |Shortform for none|
+|    no          |Shortform for none|
 |    n           |Shortform for none|
 
-**※Arguments wrapped with brackets are optional. You can start it like:**
+**※Arguments wrapped with percent sign(%) are optional. You can start it like:**
 
     FreeSrun.exe -u %USERNAME% -p %PASSWORD% -add %IPADD% -nl 3 -hi 1.5 -l d
 
