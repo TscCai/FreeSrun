@@ -22,13 +22,13 @@ The available options for argument -l stand for log level are as follows:
 |:---------------|:----------|
 |    debug       |Debug mode, has the most detailed log.|
 |    d           |Shortform for debug|
-|    warning     |Warning mode, onlyn log for exceptions and errors|
+|    warning     |Warning mode, only log for exceptions and errors|
 |    w           |Shortform for warning|
 |    none        |None mode, log nothing|
 |    no          |Shortform for none|
 |    n           |Shortform for none|
 
-**※Arguments wrapped with percent sign(%) are optional. You can start it like:**
+**※Arguments wrapped with brackets are optional. You can start it like:**
 
     FreeSrun.exe -u %USERNAME% -p %PASSWORD% -add %IPADD% -nl 3 -hi 1.5 -l d
 
