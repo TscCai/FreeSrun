@@ -56,6 +56,7 @@ namespace FreeSrun
 		///     [-hp] Heartbeat packets port, 3335 default
 		///     [-nl] Notify balloon duration, in second, 3 default
 		///     [-to] Timestamp offset between local time and server time";
+		///     [-l] Set the log level
 		///     [-h/-?/-help] Show the help info
 		/// </summary>
 		/// <param name="args"></param>

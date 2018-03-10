@@ -101,7 +101,7 @@ namespace FreeSrun.Forms
 			}
 			if (srunSvc.Config.LogLevel == SimpleLogger.LogLevel.Debug)
 			{
-				CommonService.logger.AppendLog("Login.\r\n"
+				CommonService.logger.AppendLog("Login successfully.\r\n"
 					+ "Login url: {0}\r\n" + "Login port: {1}\r\n"
 					+ "Server IP: {2}\r\n" + "Heartbeat port: {3} \r\n" + "Heartbeat interval: {4} ms\r\n"
 					+ "Logout url: {5}\r\n" + "Log level: {6}\r\n"
@@ -174,11 +174,27 @@ namespace FreeSrun.Forms
 		{
 			if (e.Mode == PowerModes.Resume)
 			{
+				if (CommonService.logger.Level == SimpleLogger.LogLevel.Debug)
+				{
+					CommonService.logger.AppendLog("Power mode resume, try login.");
+				}
 				DoLogin();
+				if (CommonService.logger.Level == SimpleLogger.LogLevel.Debug)
+				{
+					CommonService.logger.AppendLog("Relogin successfully.");
+				}
 			}
 			else if (e.Mode == PowerModes.Suspend)
 			{
+				if (CommonService.logger.Level == SimpleLogger.LogLevel.Debug)
+				{
+					CommonService.logger.AppendLog("Power mode suspend, try logout.");
+				}
 				DoLogout();
+				if (CommonService.logger.Level == SimpleLogger.LogLevel.Debug)
+				{
+					CommonService.logger.AppendLog("Logout finished.");
+				}
 			}
 		}
 
@@ -233,7 +249,9 @@ namespace FreeSrun.Forms
 
 		private void tsmi_Exit_Click(object sender, EventArgs e)
 		{
-			if (MessageBox.Show("即将退出FreeSrun并登出，是否确定？", "退出", MessageBoxButtons.OKCancel) == DialogResult.OK)
+			if (MessageBox.Show("即将退出FreeSrun并登出，是否确定？", "退出", 
+								MessageBoxButtons.OKCancel,MessageBoxIcon.Question) 
+				== DialogResult.OK)
 			{
 				DoLogout();
 				Application.Exit();

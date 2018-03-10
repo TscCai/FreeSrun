@@ -66,7 +66,7 @@ namespace FreeSrun.Util
 		}
 		public void AppendLog(Exception ex)
 		{
-			if (Level == LogLevel.None)
+			if (Level != LogLevel.None)
 			{
 				if (logger == null)
 				{
