@@ -58,9 +58,9 @@ namespace FreeSrun.Forms
 
 		private void DoLogin()
 		{
+            // the definition of "FAKE_LOGIN" is only for debug.
 #if !FAKE_LOGIN
-
-			LoginResponseResult result = srunSvc.Login();
+            LoginResponseResult result = srunSvc.Login();
 			if (result.Status == ResponseStatus.Success)
 			{
 				string uid = result.Uid;
@@ -70,6 +70,7 @@ namespace FreeSrun.Forms
 				srunSvc.HeartBeat();
 #else
             LoginResponseResult result = new LoginResponseResult(ResponseStatus.Success, "");
+            srunSvc.Status = new StatusInfo("debug only", null);
 #endif
 
 				srunSvc.Status.IsLogin = true;
@@ -82,7 +83,7 @@ namespace FreeSrun.Forms
 				txtPassword.Enabled = false;
 				txtUsername.Enabled = false;
 				btnLogin.Enabled = false;
-
+                btnLogout.Enabled = true;
 				// Hide Form
 				this.WindowState = FormWindowState.Minimized;
 
@@ -125,8 +126,12 @@ namespace FreeSrun.Forms
 		{
 			try
 			{
-				LogoutResponseResult result = srunSvc.Logout();
-				if (result.Status == ResponseStatus.Success)
+#if !FAKE_LOGIN
+                LogoutResponseResult result = srunSvc.Logout();
+#else
+                LogoutResponseResult result = new LogoutResponseResult("logout_ok");
+#endif
+                if (result.Status == ResponseStatus.Success)
 				{
 					srunSvc.Status.IsLogin = false;
 				}
@@ -135,6 +140,7 @@ namespace FreeSrun.Forms
 				txtUsername.Enabled = true;
 				txtPassword.Enabled = true;
 				btnLogin.Enabled = true;
+                btnLogout.Enabled = false;
 			}
 			catch (Exception ex)
 			{
